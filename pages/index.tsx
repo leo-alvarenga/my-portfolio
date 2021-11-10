@@ -19,6 +19,8 @@ import { DefaultProps, MiniPost, Skill } from '../libs/types';
 // data consumption
 import { getAllPostPreviewsAsMiniPosts } from '../libs/post';
 import { getAllSkills } from '../libs/skills';
+import SimpleButton from '../components/SimpleButton';
+import SkillBadge from '../components/SkillBadge';
 
 interface Props extends DefaultProps {
 	avatarUrl?: string;
@@ -52,17 +54,27 @@ const Home: NextPage<Props> = (props) => {
 				}
 
 				<div className={styles.personalDescription}>
+					<h1 className={styles.title}>
+						Bem-vindo ao meu portfólio!
+					</h1>
+
 					<p>
-						Hello, I'm Leonardo.
-						I'm a CS Student at <i>UFV-CAF</i> (Brazil)
-						who's passionate about modern Web Development.
+						Olá, meu nome é Leonardo.
+						Eu sou estudante de Ciência da Computação na {' '}
+						<i>UFV-CAF</i> e apaixonado por desenvolvimento web moderno.
 					</p>
+
+					<SimpleButton
+						href="/sobre"
+						label="Saiba mais sobre mim"
+						external={true}
+					/>
 				</div>
 			</div>
 			
-			<h1 className={styles.title}>
-				Welcome to my portfolio!
-			</h1>
+			<h2 className={styles.technologies}>
+				Tecnologias
+			</h2>
 
 			<SkillsContainer
 				skills={props.skills}
@@ -70,8 +82,9 @@ const Home: NextPage<Props> = (props) => {
 
 			<PostList>
 				{
-					props.posts.map(p => (
+					props.posts.map((p, index) => (
 						<SimpleCard
+							key={index}
 							title={p.title}
 							date={p.date}
 							subheading={p.subheading}
@@ -86,7 +99,7 @@ const Home: NextPage<Props> = (props) => {
   );
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
 	const avatarUrl = await getGithubProfilePic();
 	
 	const posts = await getAllPostPreviewsAsMiniPosts();

@@ -14,10 +14,32 @@
 .personalDescription {
 	padding-left: 0.5rem;
 	width: 60%;
+
+	display: flex;
+	flex-direction: column;
+
+	align-items: center;
 }
 
 .personalDescription p {
 	font-size: x-large;
+}
+
+.contacts {
+	display: flex;
+	flex-direction: row;
+
+	justify-items: center;
+}
+
+.technologies {
+	width: 40%;
+
+	text-align: center;
+    margin-top: 2rem;
+	padding-top: 1rem;
+
+    border-top: solid 1px #c5c5c5;
 }
 
 .main {
@@ -103,6 +125,6 @@
 	}
 
 	.personalDescription p {
-		font-size: small;
+		font-size: medium;
 	}
 }

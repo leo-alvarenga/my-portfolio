@@ -7,6 +7,7 @@ import SkillBadge from '../SkillBadge';
 const SkillsContainer = (props : SkillListProps) : JSX.Element => {
     return (
         <div className={styles.container}>
+
             <ul>
                 {
                     props.skills?.map((skill, index) => (

@@ -6,7 +6,7 @@ import { IPost, IPostPreview, MiniPost, Skill } from "./types";
  * __Obs:__ Always change it to _false_ before pushing the project to production.
  * @constant
  */
-const USE_MOCK : boolean = true;
+const USE_MOCK : boolean = false;
 
 /**
  * Mock data for a single Post object.
@@ -45,17 +45,30 @@ export const MOCK_MULTIPLE_POST_PREVIEW : IPostPreview[] = [
 	},
 ];
 
+/**
+ * Mock data for a single skill object.
+ * @constant
+ */
 export const MOCK_SINGLE_SKILL : Skill = {
     title: 'JavaScript',
     src: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg',
     alt: 'JavaScript Badge',
 };
 
+/**
+ * Mock data for multiple skills.
+ * @constant
+ */
 export const MOCK_SKILL_LIST : Skill[] = [
     {
-        title: 'JavaScript',
-        src: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg',
-        alt: 'JavaScript Badge',
+        title: 'HTML5',
+        src: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg',
+        alt: 'HTML5 Badge',
+    },
+    {
+        title: 'CSS3',
+        src: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg',
+        alt: 'CSS3 Badge',
     },
     {
         title: 'JavaScript',
@@ -63,24 +76,35 @@ export const MOCK_SKILL_LIST : Skill[] = [
         alt: 'JavaScript Badge',
     },
     {
-        title: 'JavaScript',
-        src: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg',
-        alt: 'JavaScript Badge',
+        title: 'React.js',
+        src: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg',
+        alt: 'Reactjs Badge',
     },
     {
-        title: 'JavaScript',
-        src: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg',
-        alt: 'JavaScript Badge',
+        title: 'Node.js',
+        src: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg',
+        alt: 'Nodejs Badge',
     },
     {
-        title: 'JavaScript',
-        src: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg',
-        alt: 'JavaScript Badge',
+        title: 'Express',
+        src: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg',
+        alt: 'Express Badge',
+    },
+
+    {
+        title: 'Python',
+        src: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg',
+        alt: 'Python Badge',
     },
     {
-        title: 'JavaScript',
-        src: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg',
-        alt: 'JavaScript Badge',
+        title: 'C',
+        src: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg',
+        alt: 'C Badge',
+    },
+    {
+        title: 'Java',
+        src: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg',
+        alt: 'Java Badge',
     }
 ];
 

@@ -39,3 +39,9 @@
 .container ul:first-child {
   justify-self: flex-start;
 }
+
+@media (max-width: 500px) {
+  .container {
+    width: 100%;
+  }
+}

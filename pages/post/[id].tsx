@@ -2,43 +2,54 @@
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next'
 import Head from 'next/head';
 
+import ReactMarkdown from 'react-markdown';
+
+// styles
+import styles from '../../styles/Post.module.css';
+
 // components
-import Container from "../../components/Container";
+import SimpleButton from '../../components/SimpleButton';
 
 // types
-import { DefaultProps, IPost } from '../../libs/types';
+import { DefaultProps, IPost, IPostPreview } from '../../libs/types';
 
 // data consumption
 import { getPostById, getAllPostIds } from '../../libs/post';
 
 interface PostProps extends DefaultProps {
-    post: IPost;
+    post: IPostPreview;
+    content: string;
 };
 
 const Post : NextPage<PostProps> = (props) => {
     return (
-        <Container>
+        <div className={styles.postWrapper}>
             <Head>
                 <title>{props.post.title}</title>
             </Head>
 
-            <h1>{props.post.title}</h1>
+            <div className={styles.post}>
+                <h1>{props.post.title}</h1>
 
-            <h4>{props.post.subheading}</h4>
-            <h6>{props.post.date}</h6>
+                <h4>{props.post.subheading}</h4>
+                <h6>{props.post.date}</h6>
 
-            <div>
-                {props.post.content}
+                <ReactMarkdown sourcePos={true}>
+                    {props.content}
+                </ReactMarkdown>
+                
             </div>
 
-        </Container>
+            <SimpleButton
+                href="/"
+                label="&larr; Voltar para a página principal"
+            />
+        </div>
     );
 };
 
 export const getStaticPaths : GetStaticPaths = async () => {
     const paths : Array<string | { params: { [key: string]: string } }> = await getAllPostIds();
-
-    console.log(await paths)
 
     return {
         paths,
@@ -47,11 +58,12 @@ export const getStaticPaths : GetStaticPaths = async () => {
 };
 
 export const getStaticProps : GetStaticProps = async ({ params }) => {
-    const post : IPost = await getPostById(params?.id as string);
+    const { content, ...post } : IPost = await getPostById(params?.id as string);
 
     return {
         props: {
             post,
+            content,
         },
     };
 };

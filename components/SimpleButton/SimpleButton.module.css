@@ -1,0 +1,27 @@
+.link {
+    text-decoration: none;
+}
+
+.button {
+    margin: 1rem 0 0 0;
+
+    padding: 0.5rem;
+    width: fit-content;
+
+    border: solid 1px #c5c5c5;
+    border-radius: 10px;
+
+    transition: all 500ms;
+}
+
+.button:active,
+.button:focus,
+.button:hover {
+    border-color: #0070f3;
+    color: #0070f3;
+    cursor: pointer;
+    
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 0 0.2rem black;
+    z-index: 2;;
+}

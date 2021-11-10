@@ -1,5 +1,9 @@
+import { query, collection, DocumentData, getDocs, where } from "@firebase/firestore";
+
+import { db } from "../config";
+
 import { IPost, IPostPreview, MiniPost } from "./types";
-import USE_MOCK, { MOCK_SINGLE_POST, MOCK_MULTIPLE_POST_PREVIEW, mockGetAllPostIds, mockGetAllPostPreviews, mockGetAllPostPreviewsAsMiniPosts, mockGetPostById } from "./mock";
+import USE_MOCK, { MOCK_SINGLE_POST, mockGetAllPostIds, mockGetAllPostPreviews, mockGetAllPostPreviewsAsMiniPosts, mockGetPostById } from "./mock";
 
 /**
  * Utility function.
@@ -24,6 +28,31 @@ export const convertTitleToId = (title : string) : string => {
 };
 
 /**
+ * Get all existing posts.
+ * @returns A JS `Promise` carrying an array containing all existing posts.
+ */
+export const getAllPost = async () : Promise<IPost[]> => {
+    const snapshot : DocumentData[] = [];
+
+    const q = query(collection(db, 'posts'));
+
+    (await getDocs(q)).forEach((doc) => {
+        snapshot.push(doc.data())
+    });
+
+    const posts : IPost[] = snapshot.map((doc) => (
+        {
+            id: doc['id'],
+            title: doc['title'],
+            date: doc['date'],
+            subheading: doc['subheading'],
+            content: doc['content'],
+        }
+    ));
+    return posts;
+};
+
+/**
  * Gets all existing post Ids.
  * @returns A JS `Promise` carrying an array of possible paths.
  */
@@ -31,7 +60,7 @@ export const getAllPostIds = async () : Promise<Array<string | { params: { [key:
     if (USE_MOCK)
         return await mockGetAllPostIds();
 
-    const out : Array<string | { params: { [key: string]: string } }> = MOCK_MULTIPLE_POST_PREVIEW.map(post => '/post/' + post.id);
+    const out : Array<string | { params: { [key: string]: string } }> = (await getAllPostPreviews()).map(post => '/post/' + post.id);
 
     return out;
 };
@@ -44,7 +73,17 @@ export const getAllPostPreviews = async () : Promise<IPostPreview[]> => {
     if (USE_MOCK)
         return await mockGetAllPostPreviews();
 
-    return MOCK_MULTIPLE_POST_PREVIEW;
+    const posts = await getAllPost();
+
+
+    return posts.map((post) => (
+        {
+            id: post['id'],
+            title: post['title'],
+            date: post['date'],
+            subheading: post['subheading'],
+        }
+    ));
 };
 
 /**
@@ -75,5 +114,17 @@ export const getPostById = async (id : string) : Promise<IPost> => {
     if (USE_MOCK)
         return await mockGetPostById(id);
 
-    return MOCK_SINGLE_POST;
+    const q = query(collection(db, 'posts'), where('id', '==', id));
+
+    const results : DocumentData[] = [];
+
+    (await getDocs(q)).forEach((doc) => results.push(doc.data()));
+
+    return {
+        id: results[0]['id'],
+        title: results[0]['title'],
+        date: results[0]['date'],
+        subheading: results[0]['subheading'],
+        content: results[0]['content'],
+    };
 };
