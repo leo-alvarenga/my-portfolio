@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    
+    overflow-x: auto;
+
+    width: 40%;
+    min-height: 12rem;
+}
+
+.container::-webkit-scrollbar {
+    width: 20px;
+ }
+
+.container::-webkit-scrollbar-track {
+  background-color: rgb(190, 190, 190);
+  border-radius: 5px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background: #797979;
+  border-radius: 10px;
+}
+
+.container ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+
+    align-items: center;
+    align-content: center;
+
+    justify-content: flex-start;
+
+    gap: 1rem;
+    flex-direction: row;
+}
+
+.container ul:first-child {
+  justify-self: flex-start;
+}

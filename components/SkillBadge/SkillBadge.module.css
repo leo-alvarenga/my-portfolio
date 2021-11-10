@@ -1,0 +1,24 @@
+.badgeWrapper {
+    min-width: 8rem;
+    min-height: 10rem;
+
+    padding: 0.5rem;
+
+    text-align: center;
+
+    border: solid 2px rgb(189, 189, 189);
+    border-radius: 10px;
+
+    transition: all 500ms;
+}
+
+.badgeWrapper:focus,
+.badgeWrapper:active,
+.badgeWrapper:hover {
+    border-color: #0070f3;
+    color: #0070f3;
+
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 0 0.2rem black;
+    z-index: 2;
+}
