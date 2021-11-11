@@ -19,7 +19,7 @@ const SimpleButton = (props : IProps) : JSX.Element => {
             </a>
         )
         : (
-            <Link href={props.href}>
+            <Link href={props.href} passHref>
                 <div className={styles.button}>
                     {props.label}
                 </div>

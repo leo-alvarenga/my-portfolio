@@ -10,6 +10,7 @@ const SkillBadge = (props : Skill) : JSX.Element => {
             <Image
                 className={styles.imageContainer}
                 src={props.src}
+                alt={props.alt}
                 width={80}
                 height={80}
             />
