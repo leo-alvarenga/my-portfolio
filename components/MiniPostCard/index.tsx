@@ -2,7 +2,7 @@
 import Link from 'next/link';
 
 // styles
-import styles from './SimpleCard.module.css';
+import styles from './MiniPostCard.module.css';
 
 import { MiniPost } from '../../libs/types';
 
@@ -10,7 +10,7 @@ interface Props extends MiniPost {
     externalLink?: boolean;
 };
 
-const SimpleCard = (props : Props) : JSX.Element => {
+const MiniPostCard = (props : Props) : JSX.Element => {
     return (
         <div className={styles.cardWrapper}>
             <Link href={props.href || '/'} passHref={props.externalLink}>
@@ -48,4 +48,4 @@ const SimpleCard = (props : Props) : JSX.Element => {
     );
 };
 
-export default SimpleCard;
+export default MiniPostCard;

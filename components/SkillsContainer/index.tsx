@@ -2,7 +2,7 @@ import { SkillListProps } from '../../libs/types';
 
 import styles from './SkillsContainer.module.css';
 
-import SkillBadge from '../SkillBadge';
+import Badge from '../Badge';
 
 const SkillsContainer = (props : SkillListProps) : JSX.Element => {
     return (
@@ -12,7 +12,7 @@ const SkillsContainer = (props : SkillListProps) : JSX.Element => {
                 {
                     props.skills?.map((skill, index) => (
                         <li key={`${index}`}>
-                            <SkillBadge
+                            <Badge
                                 title={skill.title}
                                 src={skill.src}
                                 alt={skill.alt}

@@ -10,7 +10,7 @@ const PostList = (props : ListProps) : JSX.Element => {
     return (
         <div className={styles.wrapper}>
             <h2>
-                {props.title || 'My blog'}
+                {props.title || 'Postagens'}
             </h2>
             <ul className={styles.list}>
                 {

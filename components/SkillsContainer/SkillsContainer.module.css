@@ -9,7 +9,7 @@
 }
 
 .container::-webkit-scrollbar {
-    width: 20px;
+    height: 8px;
  }
 
 .container::-webkit-scrollbar-track {
@@ -38,6 +38,12 @@
 
 .container ul:first-child {
   justify-self: flex-start;
+
+  margin-left: 5px;
+}
+
+.container ul:last-child {
+  margin-right: 5px;
 }
 
 @media (max-width: 500px) {

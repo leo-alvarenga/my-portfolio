@@ -1,4 +1,4 @@
-import { IPost, IPostPreview, MiniPost, Skill } from "./types";
+import { IPost, IPostPreview, MiniPost, Project, Skill, Status } from "./types";
 
 /**
  * Controls the use of actual data or mock data.
@@ -109,6 +109,43 @@ export const MOCK_SKILL_LIST : Skill[] = [
 ];
 
 /**
+ * Mock data for multiple projects.
+ * @constant
+ */
+export const MOCK_MULTIPLE_PROJECTS : Project[] = [
+    {
+        name: 'Projeto 1',
+        description: 'Projeto mockado para ser testado.',
+        href: 'https://github.com/',
+        technologies: MOCK_SKILL_LIST,
+    },
+
+    {
+        name: 'Projeto 2',
+        description: 'Putro projeto mockado para ser testado.',
+        href: 'https://github.com/',
+        technologies: MOCK_SKILL_LIST,
+    },
+
+    {
+        name: 'Projeto 3',
+        description: 'Mais um projeto mockado para ser testado.',
+        href: 'https://github.com/',
+        technologies: [ ...MOCK_SKILL_LIST, ...MOCK_SKILL_LIST],
+    },
+
+];
+
+/**
+ * Mock data for a single status object.
+ * @constant
+ */
+export const MOCK_SINGLE_STATUS : Status = {
+    title: 'Aperfeiçoando meu conhecimento em TypeScript',
+    src: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg',
+};
+
+/**
  * Gets all mock post Ids.
  * @returns A JS `Promise` carrying an array of possible paths.
  */
@@ -149,6 +186,22 @@ export const mockGetAllPostPreviewsAsMiniPosts = async () : Promise<MiniPost[]> 
  */
 export const mockGetPostById = async (id : string) : Promise<IPost> => {
     return MOCK_SINGLE_POST;
+};
+
+/**
+ * Gets all mock skills.
+ * @returns A JS `Promise` carrying an array of all the mock skills.
+ */
+export const mockGetAllSkills = async () : Promise<Skill[]> => {
+    return MOCK_SKILL_LIST;
+};
+
+export const mockGetAllProjects = async () : Promise<Project[]> => {
+    return MOCK_MULTIPLE_PROJECTS;
+};
+
+export const mockGetSingleRandomStatus = async () : Promise<Status> => {
+    return MOCK_SINGLE_STATUS;
 };
 
 export default USE_MOCK;

@@ -8,24 +8,29 @@ import styles from '../styles/Home.module.css';
 
 // components
 import Container from '../components/Container';
-import PostList from '../components/PostList';
-import SimpleCard from '../components/SimpleCard';
+import Badge from '../components/Badge';
 import SkillsContainer from '../components/SkillsContainer';
+import ProjectList from '../components/ProjectList';
+import PostList from '../components/PostList';
+import MiniPostCard from '../components/MiniPostCard';
 
 // libs
 import { getGithubProfilePic } from '../libs/info';
-import { DefaultProps, MiniPost, Skill } from '../libs/types';
+import { DefaultProps, MiniPost, Skill, Project, Status } from '../libs/types';
 
 // data consumption
-import { getAllPostPreviewsAsMiniPosts } from '../libs/post';
+import { CONTACT_LIST } from '../libs/contact';
 import { getAllSkills } from '../libs/skills';
-import SimpleButton from '../components/SimpleButton';
-import SkillBadge from '../components/SkillBadge';
+import { getAllPostPreviewsAsMiniPosts } from '../libs/post';
+import { getAllProjects } from '../libs/project';
+import { getSingleRandomStatus } from '../libs/status';
 
 interface Props extends DefaultProps {
 	avatarUrl?: string;
+	status: Status;
 	posts: MiniPost[];
 	skills: Skill[];
+	projects: Project[];
 };
 
 const Home: NextPage<Props> = (props) => {
@@ -39,19 +44,35 @@ const Home: NextPage<Props> = (props) => {
 
 		<main className={styles.main}>
 			<div className={styles.personalInfo}>
-				{
-					props.avatarUrl
-					? (
+				<div className={styles.profileWrapper}>
+					{
+						props.avatarUrl
+						? (
+							<Image
+								className={styles.profilePic}
+								src={props.avatarUrl}
+								alt="Leo's Github profile picture"
+								width="250px"
+								height="250px"
+							/>
+						)
+						: null
+					}
+
+					<div className={styles.profileStatus}>
 						<Image
-							className={styles.profilePic}
-							src={props.avatarUrl}
-							alt="Leo's Github profile picture"
-							width="200px"
-							height="200px"
+							src={props.status.src}
+							alt="Status image"
+							width={30}
+							height={30}
 						/>
-					)
-					: null
-				}
+
+						<small className={styles.profileStatusTitle}>
+							{props.status.title}
+						</small>
+					</div>
+
+				</div>
 
 				<div className={styles.personalDescription}>
 					<h1 className={styles.title}>
@@ -64,11 +85,20 @@ const Home: NextPage<Props> = (props) => {
 						<i>UFV-CAF</i> e apaixonado por desenvolvimento web moderno.
 					</p>
 
-					<SimpleButton
-						href="/sobre"
-						label="Saiba mais sobre mim"
-						external={true}
-					/>
+					<h2>Entre em contato:</h2>
+					<div className={styles.contacts}>
+						{
+							CONTACT_LIST.map((contact, index) => (
+								<Badge
+									src={contact.src}
+									alt={contact.alt}
+									href={contact.href}
+									key={`${index}`}
+								/>
+							))
+						}
+					</div>
+
 				</div>
 			</div>
 			
@@ -80,10 +110,14 @@ const Home: NextPage<Props> = (props) => {
 				skills={props.skills}
 			/>
 
+			<ProjectList
+				projects={props.projects}
+			/>
+
 			<PostList>
 				{
 					props.posts.map((p, index) => (
-						<SimpleCard
+						<MiniPostCard
 							key={index}
 							title={p.title}
 							date={p.date}
@@ -104,14 +138,19 @@ export const getServerSideProps = async () => {
 	
 	const posts = await getAllPostPreviewsAsMiniPosts();
 	const skills = await getAllSkills();
+	const projects = await getAllProjects();
+	const status = await getSingleRandomStatus();
 
 	return {
 		props: {
 			avatarUrl: avatarUrl || '',
 			posts,
 			skills,
+			projects,
+			status,
 		},
 	};
 };
 
-export default Home
+export default Home;
+

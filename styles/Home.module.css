@@ -11,6 +11,51 @@
 	margin: 2rem;
 }
 
+.profileWrapper {
+	position: relative;
+}
+
+.profileStatus {
+	top: 70%;
+	left: 80%;
+
+	display: flex;
+	flex-direction: row;
+
+	position: absolute;
+	width: max-content;
+	height: fit-content;
+
+	transition: all 500ms;
+
+	padding: 0.8rem;
+	background-color: #fafafa;
+
+	border: solid 1px #c5c5c5;
+	border-radius: 2em;
+}
+
+.profileStatusTitle {
+	margin-top: 8px;
+
+	margin-left: 1rem;
+
+	display: none;
+}
+
+.profileStatus:hover {
+	border-color: #0070f3;
+    color: #0070f3;
+    
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 0 0.2rem black;
+    z-index: 2;
+}
+
+.profileStatus:hover .profileStatusTitle {
+	display: block;
+}
+
 .personalDescription {
 	padding-left: 0.5rem;
 	width: 60%;
@@ -30,6 +75,8 @@
 	flex-direction: row;
 
 	justify-items: center;
+
+	gap: 1rem;
 }
 
 .technologies {
@@ -44,7 +91,7 @@
 
 .main {
 	min-height: 100vh;
-	padding: 4rem 0;
+	padding: 3rem 0;
 	flex: 1;
 	display: flex;
 	flex-direction: column;
@@ -120,11 +167,22 @@
 		flex-direction: column;
 	}
 
+	.profileStatus {
+		max-width: 10rem;
+		height: auto;
+		flex-direction: column;
+	}
+
+	.profileStatusTitle {
+		margin: 1rem 0.5rem 0.5rem 0.5rem;
+	}
+
 	.personalDescription {
 		width: 100%;
 	}
 
 	.personalDescription p {
-		font-size: medium;
+		font-size: large;
+		width: 100%;
 	}
 }

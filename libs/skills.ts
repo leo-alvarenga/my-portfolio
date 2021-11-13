@@ -1,7 +1,7 @@
 import { db } from "../config";
 
 import { Skill } from "./types";
-import USE_MOCK, { MOCK_SKILL_LIST } from "./mock";
+import USE_MOCK, { mockGetAllSkills } from "./mock";
 import { query, collection, DocumentData, getDocs } from "@firebase/firestore";
 
 /**
@@ -10,7 +10,7 @@ import { query, collection, DocumentData, getDocs } from "@firebase/firestore";
  */
 export const getAllSkills = async () : Promise<Skill[]> => {
     if (USE_MOCK)
-        return MOCK_SKILL_LIST;
+        return await mockGetAllSkills();
 
     // create an empty query, to select all docs from the 'skills' collection
     const q = query(collection(db, 'skills'));
