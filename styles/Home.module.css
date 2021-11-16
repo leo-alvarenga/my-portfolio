@@ -29,9 +29,13 @@
 	transition: all 500ms;
 
 	padding: 0.8rem;
-	background-color: #fafafa;
 
-	border: solid 1px #c5c5c5;
+	color: var(--default-text-color);
+    border: 3px double transparent;
+    background-image: linear-gradient(var(--background-color-dark), var(--background-color-dark)), radial-gradient(circle at left top, var(--gradient-color-start), var(--gradient-color-end));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+
 	border-radius: 2em;
 }
 
@@ -44,11 +48,10 @@
 }
 
 .profileStatus:hover {
-	border-color: #0070f3;
-    color: #0070f3;
+    color: var(--gradient-color-start);
     
     transform: translateY(-3px) scale(1.01);
-    box-shadow: 0 0 0.2rem black;
+    box-shadow: rgba(var(--primary-color), 0.5) 0px 0px 20px 0px;
     z-index: 2;
 }
 
@@ -99,21 +102,16 @@
 	align-items: center;
 }
 
-.title a {
-	color: #0070f3;
-	text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-	text-decoration: underline;
-}
-
 .title {
 	margin: 2rem 0 0 0;
 	line-height: 1.15;
 	font-size: 2.5rem;
+	text-shadow: 0 0 80px rgb(192 219 255 / 75%), 0 0 32px rgb(65 120 255 / 24%);
+
+	background: linear-gradient(to right, #30CFD0, #c43ad6);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 .title,
@@ -171,6 +169,8 @@
 		max-width: 10rem;
 		height: auto;
 		flex-direction: column;
+
+		left: -5%;
 	}
 
 	.profileStatusTitle {
@@ -184,5 +184,9 @@
 	.personalDescription p {
 		font-size: large;
 		width: 100%;
+	}
+
+	.technologies {
+		width: 90%;
 	}
 }

@@ -14,11 +14,17 @@ const PostList = (props : ListProps) : JSX.Element => {
             </h2>
             <ul className={styles.list}>
                 {
-                    props.children?.map((el, index) => (
-                        <li className={styles.listItem} key={`${index}`}>
-                            {el}
-                        </li>
-                    ))
+                    props.children && props.children?.length > 0
+                    ? (
+                        props.children?.map((el, index) => (
+                            <li className={styles.listItem} key={`${index}`}>
+                                {el}
+                            </li>
+                        ))
+                    )
+                    : (
+                        <h4>Não existem posts por aqui...</h4>
+                    )
                 }
             </ul>
         </div>

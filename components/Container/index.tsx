@@ -1,7 +1,7 @@
 import styles from './Container.module.css';
 
-type Props = {
-    children?: JSX.Element[];
+interface Props {
+    children?: JSX.Element | JSX.Element[];
 }
 
 const Container = (props : Props) : JSX.Element => {

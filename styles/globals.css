@@ -1,5 +1,26 @@
+:root {
+  --background-image: url(../public/bg1.jpeg);
+
+  --default-background-color: rgba(14, 12, 13, 1);
+  --background-color-dark: rgb(13, 14, 33);
+  --default-text-color: rgba(255, 255, 255, 0.92);
+  --text-color-hover: rgb(5, 55, 218);
+
+  --primary-color: 111, 76, 255;
+  --border-color: rgba(61, 61, 61, 0.92);
+
+  --gradient-color-start: rgb(1, 110, 218);
+  --gradient-color-end: rgb(217, 0, 192);
+
+  --background-gradient-start: rgb(0, 20, 38);
+  --background-gradient-end: rgb(40, 0, 40);
+}
+
 html,
 body {
+  background-image: radial-gradient(circle at left top, var(--background-gradient-start), var(--background-gradient-end));
+  color: var(--default-text-color);
+
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -17,6 +38,10 @@ html::-webkit-scrollbar-track {
 html::-webkit-scrollbar-thumb {
   background: #797979;
   border-radius: 10px;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  text-shadow: 0 0 40px rgb(192 219 255 / 75%), 0 0 32px rgb(65 120 255 / 24%);
 }
 
 a {

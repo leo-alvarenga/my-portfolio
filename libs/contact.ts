@@ -15,7 +15,7 @@ export const CONTACT_LIST : BadgeProps[] = [
     },
     {
         title: 'GitHub',
-        src: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg',
+        src: 'https://logodix.com/logo/64439.png',
         alt: 'Me contate pelo GitHub',
         href: 'https://github.com/leo-alvarenga/',
     },

@@ -33,7 +33,7 @@ const Badge = (props : BadgeProps) : JSX.Element => {
         : (
             <div className={styles.badgeWrapper}>
                 <Image
-                    className={styles.imageContainer}
+                    className={props.src?.includes('github') ? styles.imageContainer : ''}
                     src={props.src}
                     alt={props.alt}
                     width={80}

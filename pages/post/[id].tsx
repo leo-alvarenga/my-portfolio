@@ -31,10 +31,10 @@ const Post : NextPage<PostProps> = (props) => {
             <div className={styles.post}>
                 <h1>{props.post.title}</h1>
 
-                <h4>{props.post.subheading}</h4>
-                <h6>{props.post.date}</h6>
+                <h3>{props.post.subheading}</h3>
+                <h4>{props.post.date}</h4>
 
-                <ReactMarkdown sourcePos={true}>
+                <ReactMarkdown sourcePos={true} className={styles.content}>
                     {props.content}
                 </ReactMarkdown>
                 
