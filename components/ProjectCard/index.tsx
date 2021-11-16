@@ -7,7 +7,7 @@ import styles from './ProjectCard.module.css';
 const ProjectCard = (props : Project) : JSX.Element => {
     
     return (
-        <a href={props.href} className={styles.card} target="_blank">
+        <a href={props.href} className={styles.card} target="_blank" rel="noreferrer">
             <div className={styles.cardWrapper}>
                 <h2>
                     {props.name}

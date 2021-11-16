@@ -14,7 +14,7 @@ const Badge = (props : BadgeProps) : JSX.Element => {
     return (
         props.href
         ? (
-            <a href={props.href} target="_blank" onClick={() => handleLinkClick(props.href)}>
+            <a href={props.href} target="_blank" rel="noreferrer" onClick={() => handleLinkClick(props.href)}>
                 <div className={styles.linkBadgeWrapper}>
                     <Image
                         className={styles.imageContainer}
